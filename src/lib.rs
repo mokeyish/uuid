@@ -111,7 +111,7 @@
 )]
 #![deny(warnings)]
 #![cfg_attr(not(feature = "std"), no_std)]
-#![cfg_attr(feature = "nightly", feature(const_fn))]
+#![cfg_attr(nightly, feature(const_fn))]
 
 
 #[macro_use]
@@ -716,12 +716,12 @@ impl Uuid {
     ///
     /// let uuid = Uuid::from_uuid_bytes(bytes);
     /// ```
-    #[cfg(not(feature = "nightly"))]
+    #[cfg(not(nightly))]
     pub fn from_uuid_bytes(b: UuidBytes) -> Uuid {
         Uuid { bytes: b }
     }
 
-    #[cfg(feature = "nightly")]
+    #[cfg(nightly)]
     pub const fn from_uuid_bytes(b: UuidBytes) -> Uuid {
         Uuid { bytes: b }
     }
